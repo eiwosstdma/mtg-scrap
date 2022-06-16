@@ -1,0 +1,28 @@
+{
+  "name": "mtg-scrap",
+  "version": "1.0.0",
+  "description": "Mtg scrapper",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mtg",
+    "mtgo",
+    "scrap",
+    "scrapper"
+  ],
+  "author": "Eiwos studio @eiwos.studio@gmail.com",
+  "license": "ISC",
+  "homepage": "https://github.com/eiwosstdma/mtg-scrap#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eiwosstdma/mtg-scrap.git"
+  },
+  "engines": {
+    "node": ">=14.19.0 <=16.15.1"
+  },
+  "devDependencies": {
+    "jasmine": "^4.2.0"
+  }
+}
