@@ -1,26 +1,28 @@
 const { resolve } = require("path");
 const { readFile } = require("fs/promises");
-const { readFileSync, existsSync } = require("fs/promises");
+const { readFileSync, existsSync } = require("fs");
+
+const moduleFileName = "file-manager.service.js"
 
 /**
  * @param {string} fileName
- * @param {boolean} isNeedToBeAsync
+ * @param {boolean} doesItNeedToBeAsync
  * @returns {Promise<string|null|undefined>}
  */
-const getDataFromAFile = async (fileName, isNeedToBeAsync) => {
+const getDataFromAFile = async (fileName, doesItNeedToBeAsync) => {
   if (typeof fileName !== "string") {
-    throw new TypeError("jsonFileService: fileName Parameter is not a string.");
+    throw new TypeError(`${ moduleFileName }: fileName Parameter is not a string.`);
   }
 
-  if (typeof isNeedToBeAsync !== "boolean") {
-    throw new TypeError("jsonFileService: asyncOrNot parameter is not a boolean.");
+  if (typeof doesItNeedToBeAsync !== "boolean") {
+    throw new TypeError(`${ moduleFileName }: doesItNeedToBeAsync Parameter is not a boolean.`);
   }
 
-  const pathToTheFile = resolve("./data", fileName);
+  const pathToTheFile = resolve(`${process.env.DATAFOLDER}`, fileName);
   const doesFileExist = existsSync(pathToTheFile);
 
   if (doesFileExist) {
-    if (isNeedToBeAsync) {
+    if (doesItNeedToBeAsync) {
       try {
         const data = await readFile(pathToTheFile, "utf-8");
         return data.toString();
@@ -37,8 +39,6 @@ const getDataFromAFile = async (fileName, isNeedToBeAsync) => {
   }
 };
 
-const putDataInAFile = async (fileName, fileData) => {};
-
 module.exports = {
-
+  getDataFromAFile
 };
