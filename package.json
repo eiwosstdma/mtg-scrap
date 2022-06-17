@@ -4,7 +4,7 @@
   "description": "Mtg scrapper",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "mtg",
@@ -23,6 +23,9 @@
     "node": ">=14.19.0 <=16.15.1"
   },
   "devDependencies": {
-    "jasmine": "^4.2.0"
+    "jest": "^28.1.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1"
   }
 }
