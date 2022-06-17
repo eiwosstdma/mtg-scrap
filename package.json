@@ -1,18 +1,19 @@
 {
   "name": "mtg-scrap",
   "version": "1.0.0",
-  "description": "Mtg scrapper",
+  "description": "MTG Scrapper - Aims to scrap from all data providers (mtgo, scg, etc) everything of all formats, save it locally or make it usable as an API.",
   "private": true,
   "scripts": {
+    "start": "node index.js",
     "test": "jest"
   },
   "keywords": [
     "mtg",
     "mtgo",
     "scrap",
-    "scrapper"
+    "scraper"
   ],
-  "author": "Eiwos studio @eiwos.studio@gmail.com",
+  "author": "Eim AKA eiwos.studio@gmail.com",
   "license": "ISC",
   "homepage": "https://github.com/eiwosstdma/mtg-scrap#readme",
   "repository": {
@@ -20,12 +21,13 @@
     "url": "https://github.com/eiwosstdma/mtg-scrap.git"
   },
   "engines": {
-    "node": ">=14.19.0 <=16.15.1"
+    "node": ">=16.14.0 <=18.4.0"
   },
   "devDependencies": {
     "jest": "^28.1.1"
   },
   "dependencies": {
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "node-fetch": "^3.2.6"
   }
 }
