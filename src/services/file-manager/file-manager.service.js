@@ -1,8 +1,6 @@
 const { resolve } = require("path");
-const { readFile } = require("fs/promises");
+const { readFile, writeFile } = require("fs/promises");
 const { readFileSync, existsSync } = require("fs");
-
-const moduleFileName = "file-manager.service.js"
 
 /**
  * @param {string} fileName
@@ -11,14 +9,14 @@ const moduleFileName = "file-manager.service.js"
  */
 const getDataFromAFile = async (fileName, doesItNeedToBeAsync) => {
   if (typeof fileName !== "string") {
-    throw new TypeError(`${ moduleFileName }: fileName Parameter is not a string.`);
+    throw new TypeError(`${ getDataFromAFile.name }: fileName Parameter is not a string.`);
   }
 
   if (typeof doesItNeedToBeAsync !== "boolean") {
-    throw new TypeError(`${ moduleFileName }: doesItNeedToBeAsync Parameter is not a boolean.`);
+    throw new TypeError(`${ getDataFromAFile.name }: doesItNeedToBeAsync Parameter is not a boolean.`);
   }
 
-  const pathToTheFile = resolve(`${process.env.DATAFOLDER}`, fileName);
+  const pathToTheFile = resolve(process.env.DATA_FOLDER, fileName);
   const doesFileExist = existsSync(pathToTheFile);
 
   if (doesFileExist) {
@@ -39,6 +37,35 @@ const getDataFromAFile = async (fileName, doesItNeedToBeAsync) => {
   }
 };
 
+/**
+ * @param {string} fileName
+ * @param {string} fileData
+ * @returns {Promise<boolean>}
+ */
+const putDataInAFile = async (fileName, fileData) => {
+  if (typeof fileName !== "string") {
+    throw new TypeError(`${ putDataInAFile.name }: fileName Parameter is not a string.`);
+  }
+
+  if (typeof fileData !== "string") {
+    throw new TypeError(`${ putDataInAFile.name }: fileData parameter is not a string.`);
+  }
+
+  if (fileData.length === 0) {
+    throw new TypeError(`${ putDataInAFile.name }: fileData parameter is at length 0.`);
+  }
+
+  try {
+    const pathToTheFile = resolve(process.env.DATA_FOLDER, fileName);
+    await writeFile(pathToTheFile, fileData);
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
 module.exports = {
-  getDataFromAFile
+  getDataFromAFile,
+  putDataInAFile
 };
