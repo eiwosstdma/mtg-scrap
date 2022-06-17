@@ -19,4 +19,6 @@ dotenv.config();
 /**
  * Application run
  */
-console.log(process.env.DATAFOLDER)
+(async () => {
+
+})();
