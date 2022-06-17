@@ -1,6 +1,6 @@
 # MTG Scrap
 
-## What is it ??
+## What is it ?
 MTG Scrap aims to make it easy to scrap and parse public MTG data through internet.
 
 ## How to use it ?
