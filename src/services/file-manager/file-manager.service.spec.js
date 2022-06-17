@@ -1,6 +1,6 @@
 const { getDataFromAFile, putDataInAFile } = require("./file-manager.service.js");
-const { writeFile, rm } = require("fs/promises");
-const { join } = require("path");
+const { writeFile, rm } = require("node:fs/promises");
+const { join } = require("node:path");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -32,12 +32,13 @@ test(`func: ${ getDataFromAFile.name } - Should throw TypeError of invalid boole
 
 test(`func: ${ getDataFromAFile.name } - Should find a file at ./data/fake-file.json`, async () => {
   const nameForTheFile = "fake-file.json";
-  const someStr = "fake file data";
-  const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATAFOLDER }/${ nameForTheFile }`);
+  const someStr = "fake file dataaaaa";
+  const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATA_FOLDER }/${ nameForTheFile }`);
+
   await writeFile(pathToTheFakeFile, someStr);
 
-  const data = await getDataFromAFile(nameForTheFile, false);
-  expect(data).toBe("fake file data");
+  const data = await getDataFromAFile(nameForTheFile, true);
+  expect(data).toBe(someStr);
 
   await rm(pathToTheFakeFile);
 });
@@ -46,9 +47,9 @@ test(`func: ${ getDataFromAFile.name } - Should find a file at ./data/fake-file.
  * putDataInAFile
  */
 test(`func: ${ putDataInAFile.name } - Should create a file and return true`, async () => {
-  const nameForTheFile = "fake-file.json";
+  const nameForTheFile = "file.json";
   const someStr = "fake file data";
-  const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATAFOLDER }/${ nameForTheFile }`);
+  const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATA_FOLDER }/${ nameForTheFile }`);
 
   const data = await putDataInAFile(nameForTheFile, someStr);
   expect(data).toBeTruthy();
@@ -59,10 +60,9 @@ test(`func: ${ putDataInAFile.name } - Should create a file and return true`, as
 test(`func: ${ putDataInAFile.name } - Should thrown TypeError of length data invalid`, async () => {
   const nameForTheFile = "fake-file.json";
   const someStr = "";
-  const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATAFOLDER }/${ nameForTheFile }`);
 
   try {
-    const data = await putDataInAFile(nameForTheFile, someStr);
+    await putDataInAFile(nameForTheFile, someStr);
   } catch (err) {
     expect(err.message).toBe(`${ putDataInAFile.name }: fileData parameter is at length 0.`);
   }
@@ -71,10 +71,9 @@ test(`func: ${ putDataInAFile.name } - Should thrown TypeError of length data in
 test(`func: ${ putDataInAFile.name } - Should thrown TypeError of invalid data parameter`, async () => {
   const nameForTheFile = 123456;
   const someStr = "fake file data";
-  const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATAFOLDER }/${ nameForTheFile }`);
 
   try {
-    const data = await putDataInAFile(nameForTheFile, someStr);
+    await putDataInAFile(nameForTheFile, someStr);
   } catch (err) {
     expect(err.message).toBe(`${ putDataInAFile.name }: fileName Parameter is not a string.`);
   }
@@ -83,10 +82,9 @@ test(`func: ${ putDataInAFile.name } - Should thrown TypeError of invalid data p
 test(`func: ${ putDataInAFile.name } - Should thrown TypeError of invalid data parameter`, async () => {
   const nameForTheFile = "fake-file.json";
   const someStr = 45687;
-  const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATAFOLDER }/${ nameForTheFile }`);
 
   try {
-    const data = await putDataInAFile(nameForTheFile, someStr);
+    await putDataInAFile(nameForTheFile, someStr);
   } catch (err) {
     expect(err.message).toBe(`${ putDataInAFile.name }: fileData parameter is not a string.`);
   }
