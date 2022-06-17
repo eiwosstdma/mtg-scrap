@@ -1,3 +1,5 @@
+"use strict";
+
 const { resolve } = require("path");
 const { readFile, writeFile } = require("fs/promises");
 const { readFileSync, existsSync } = require("fs");
