@@ -2,8 +2,8 @@
 const { load } = require("cheerio");
 
 /**
- * @param {string} rawText
- * @param {object} schema
+ * @param {string} rawText - A string that represent the body or total html of a page
+ * @param {object} schema - Rules for the parser to parse the data
  * @returns {Promise<void>}
  */
 const parseRawData = async (rawText, schema) => {
