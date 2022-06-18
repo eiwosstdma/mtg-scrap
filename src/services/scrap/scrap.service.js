@@ -2,7 +2,7 @@
 const fetch = require("node-fetch");
 
 /**
- * @param {string} target
+ * @param {string} target - A link to fetch the data from (text/html)
  * @returns {Promise<string|null|undefined>}
  */
 const getRawDataFromEvent = async (target) => {
