@@ -7,7 +7,9 @@ MTG Scrap aims to be a simple scraper/parser with cool features to make your lif
 
 ## A bug ? Need a feature ?
 
-## License
+# Other - Miscellaneous
+
+### License - ISC
 It is open source and under the ISC usage License.
 
 >Copyright (C) 2022 https://github.com/eiwosstdma
