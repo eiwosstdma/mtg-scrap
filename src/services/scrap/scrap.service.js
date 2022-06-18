@@ -10,7 +10,6 @@ const getRawDataFromEvent = async (target) => {
     const data = await fetch(target);
     return await data.text();
   } catch(err) {
-    console.log(err);
     return null;
   }
 };
