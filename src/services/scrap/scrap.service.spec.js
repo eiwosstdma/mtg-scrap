@@ -1,4 +1,4 @@
-const { getRawDataFromEvent } = require("./scrap-manager.service.js");
+const { getRawDataFromEvent } = require("./scrap.service.js");
 const dotenv = require("dotenv");
 dotenv.config();
 
