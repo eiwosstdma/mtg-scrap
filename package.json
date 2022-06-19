@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
+    "web-start": "node ./src/web-api/server.js",
+    "web-serve": "nodemon ./src/web-api/server.js",
     "test": "jest"
   },
   "keywords": [
@@ -24,7 +26,8 @@
     "node": ">=16.14.0 <=18.4.0"
   },
   "devDependencies": {
-    "jest": "^28.1.1"
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.16"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
