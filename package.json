@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "web-start": "node ./src/web-api/server.js",
-    "web-serve": "nodemon ./src/web-api/server.js",
+    "api-start": "node ./src/web-api/server.js",
+    "api-serve": "nodemon ./src/web-api/server.js",
     "test": "jest"
   },
   "keywords": [
@@ -32,6 +32,7 @@
   "dependencies": {
     "body-parser": "^1.20.0",
     "cheerio": "^1.0.0-rc.11",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
