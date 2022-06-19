@@ -1,7 +1,7 @@
 "use strict";
-const { resolve } = require("path");
-const { readFile, writeFile } = require("fs/promises");
-const { readFileSync, existsSync } = require("fs");
+const { resolve } = require("node:path");
+const { readFile, writeFile } = require("node:fs/promises");
+const { readFileSync, existsSync } = require("node:fs");
 
 /**
  * @param {string} fileName
