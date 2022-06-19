@@ -1,4 +1,4 @@
-# MTG Scrap
+# MTG-scrap
 
 ### What is it ?
 MTG Scrap aims to be a simple scraper/parser with cool features to make your life easier.
@@ -11,7 +11,7 @@ MTG Scrap aims to be a simple scraper/parser with cool features to make your lif
 ### License - ISC
 It is open source and under the ISC usage License.
 
->Copyright (C) 2022 [https://github.com/eiwosstdma](https://github.com/eiwosstdma/mtg-scrap)
+>Copyright (C) 2022 MTG-scrap
 >
 >Permission to use, copy, modify, and/or distribute this software for any
 >purpose with or without fee is hereby granted, provided that the above
