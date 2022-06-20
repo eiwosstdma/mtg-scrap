@@ -2,6 +2,9 @@
 const { join } = require("node:path");
 const knex = require("knex");
 
+/**
+ * @returns {Promise<*|Knex<any, unknown[]>|null>}
+ */
 const queryBuilder = async () => {
   const isSql = process.env.DATA_FORMAT;
 
@@ -16,7 +19,7 @@ const queryBuilder = async () => {
         filename: pathToDBFile
       }
     });
-  } return null;
+  } else return null;
 };
 
 module.exports = {
