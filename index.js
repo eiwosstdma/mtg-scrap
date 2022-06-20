@@ -21,6 +21,10 @@ dotenv.config();
  * Application run
  */
 (async () => {
-  const someTxt = "<p>456</p>";
-  await parseRawData(someTxt);
+  const fakeHtml = `
+    <h1 id="ded">aadde</h1>
+    <hr>
+    <p>efgzhifuiezlfjoue</p>  
+  `;
+  await parseRawData(fakeHtml);
 })();
