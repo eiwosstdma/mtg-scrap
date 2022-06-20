@@ -1,91 +1,91 @@
-const { getDataFromAFile, putDataInAFile } = require("./file-manager.service.js");
+const { getData, putData } = require("./file-manager.service.js");
 const { writeFile, rm } = require("node:fs/promises");
 const { join } = require("node:path");
 const dotenv = require("dotenv");
 dotenv.config();
 
 /**
- * Test getDataFromAFile
+ * Test getData
  */
-test(`func: ${ getDataFromAFile.name } - Should return null`, async () => {
-  const data = await getDataFromAFile("file-not-exist.json", false);
+test(`func: ${ getData.name } - Should return null`, async () => {
+  const data = await getData("file-not-exist.json", false);
   expect(data).toBeNull();
 });
 
-test(`func: ${ getDataFromAFile.name } - Should throw TypeError of invalid string parameter`, async () => {
+test(`func: ${ getData.name } - Should throw TypeError of invalid string parameter`, async () => {
   try {
-    const data = await getDataFromAFile(789, false);
+    const data = await getData(789, false);
     expect(data).toBeUndefined();
   } catch (e) {
-    expect(e.message).toBe(`${ getDataFromAFile.name }: fileName Parameter is not a string.`);
+    expect(e.message).toBe(`${ getData.name }: fileName Parameter is not a string.`);
   }
 });
 
-test(`func: ${ getDataFromAFile.name } - Should throw TypeError of invalid boolean parameter`, async () => {
+test(`func: ${ getData.name } - Should throw TypeError of invalid boolean parameter`, async () => {
   try {
-    const data = await getDataFromAFile("fake-file.json", 456);
+    const data = await getData("fake-file.json", 456);
     expect(data).toBeUndefined();
   } catch (e) {
-    expect(e.message).toBe(`${ getDataFromAFile.name }: doesItNeedToBeAsync Parameter is not a boolean.`);
+    expect(e.message).toBe(`${ getData.name }: doesItNeedToBeAsync Parameter is not a boolean.`);
   }
 });
 
-test(`func: ${ getDataFromAFile.name } - Should find a file at ./data/fake-file.json`, async () => {
+test(`func: ${ getData.name } - Should find a file at ./data/fake-file.json`, async () => {
   const nameForTheFile = "fake-file.json";
   const someStr = "fake file dataaaaa";
   const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATA_FOLDER }/${ nameForTheFile }`);
 
   await writeFile(pathToTheFakeFile, someStr);
 
-  const data = await getDataFromAFile(nameForTheFile, true);
+  const data = await getData(nameForTheFile, true);
   expect(data).toBe(someStr);
 
   await rm(pathToTheFakeFile);
 });
 
 /**
- * putDataInAFile
+ * putData
  */
-test(`func: ${ putDataInAFile.name } - Should create a file and return true`, async () => {
+test(`func: ${ putData.name } - Should create a file and return true`, async () => {
   const nameForTheFile = "file.json";
   const someStr = "fake file data";
   const pathToTheFakeFile = join(__dirname, `../../../${ process.env.DATA_FOLDER }/${ nameForTheFile }`);
 
-  const data = await putDataInAFile(nameForTheFile, someStr);
+  const data = await putData(nameForTheFile, someStr);
   expect(data).toBeTruthy();
 
   await rm(pathToTheFakeFile);
 });
 
-test(`func: ${ putDataInAFile.name } - Should thrown TypeError of length data invalid`, async () => {
+test(`func: ${ putData.name } - Should thrown TypeError of length data invalid`, async () => {
   const nameForTheFile = "fake-file.json";
   const someStr = "";
 
   try {
-    await putDataInAFile(nameForTheFile, someStr);
+    await putData(nameForTheFile, someStr);
   } catch (err) {
-    expect(err.message).toBe(`${ putDataInAFile.name }: fileData parameter is at length 0.`);
+    expect(err.message).toBe(`${ putData.name }: fileData parameter is at length 0.`);
   }
 });
 
-test(`func: ${ putDataInAFile.name } - Should thrown TypeError of invalid data parameter`, async () => {
+test(`func: ${ putData.name } - Should thrown TypeError of invalid data parameter`, async () => {
   const nameForTheFile = 123456;
   const someStr = "fake file data";
 
   try {
-    await putDataInAFile(nameForTheFile, someStr);
+    await putData(nameForTheFile, someStr);
   } catch (err) {
-    expect(err.message).toBe(`${ putDataInAFile.name }: fileName Parameter is not a string.`);
+    expect(err.message).toBe(`${ putData.name }: fileName Parameter is not a string.`);
   }
 });
 
-test(`func: ${ putDataInAFile.name } - Should thrown TypeError of invalid data parameter`, async () => {
+test(`func: ${ putData.name } - Should thrown TypeError of invalid data parameter`, async () => {
   const nameForTheFile = "fake-file.json";
   const someStr = 45687;
 
   try {
-    await putDataInAFile(nameForTheFile, someStr);
+    await putData(nameForTheFile, someStr);
   } catch (err) {
-    expect(err.message).toBe(`${ putDataInAFile.name }: fileData parameter is not a string.`);
+    expect(err.message).toBe(`${ putData.name }: fileData parameter is not a string.`);
   }
 });

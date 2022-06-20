@@ -8,13 +8,13 @@ const { readFileSync, existsSync } = require("node:fs");
  * @param {boolean} doesItNeedToBeAsync
  * @returns {Promise<string|null|undefined>}
  */
-const getDataFromAFile = async (fileName, doesItNeedToBeAsync) => {
+const getData = async (fileName, doesItNeedToBeAsync) => {
   if (typeof fileName !== "string") {
-    throw new TypeError(`${ getDataFromAFile.name }: fileName Parameter is not a string.`);
+    throw new TypeError(`${ getData.name }: fileName Parameter is not a string.`);
   }
 
   if (typeof doesItNeedToBeAsync !== "boolean") {
-    throw new TypeError(`${ getDataFromAFile.name }: doesItNeedToBeAsync Parameter is not a boolean.`);
+    throw new TypeError(`${ getData.name }: doesItNeedToBeAsync Parameter is not a boolean.`);
   }
 
   const pathToTheFile = resolve(process.env.DATA_FOLDER, fileName);
@@ -43,17 +43,17 @@ const getDataFromAFile = async (fileName, doesItNeedToBeAsync) => {
  * @param {string} fileData
  * @returns {Promise<boolean>}
  */
-const putDataInAFile = async (fileName, fileData) => {
+const putData = async (fileName, fileData) => {
   if (typeof fileName !== "string") {
-    throw new TypeError(`${ putDataInAFile.name }: fileName Parameter is not a string.`);
+    throw new TypeError(`${ putData.name }: fileName Parameter is not a string.`);
   }
 
   if (typeof fileData !== "string") {
-    throw new TypeError(`${ putDataInAFile.name }: fileData parameter is not a string.`);
+    throw new TypeError(`${ putData.name }: fileData parameter is not a string.`);
   }
 
   if (fileData.length === 0) {
-    throw new TypeError(`${ putDataInAFile.name }: fileData parameter is at length 0.`);
+    throw new TypeError(`${ putData.name }: fileData parameter is at length 0.`);
   }
 
   try {
@@ -67,6 +67,6 @@ const putDataInAFile = async (fileName, fileData) => {
 };
 
 module.exports = {
-  getDataFromAFile,
-  putDataInAFile
+  getData,
+  putData
 };
