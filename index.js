@@ -10,7 +10,7 @@ const dotenv = require("dotenv");
 /**
  * Application modules Imports
  */
-const { getRawData } = require("./src/services/scrap/scrap.service.js");
+const { getRawDataFromEvent } = require("./src/services/scrap/scrap.service.js");
 const { parseRawData } = require("./src/services/parser/parser.service.js");
 
 /**
@@ -22,7 +22,7 @@ dotenv.config();
  * Application run
  */
 (async () => {
-  const data = await getRawData("https://magic.wizards.com/en/articles/archive/mtgo-standings/modern-preliminary-2022-06-22");
+  const data = await getRawDataFromEvent("https://magic.wizards.com/en/articles/archive/mtgo-standings/modern-preliminary-2022-06-22");
   const parsedData = await parseRawData(data);
 
   console.log(parsedData);
