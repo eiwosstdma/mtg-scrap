@@ -1,6 +1,6 @@
 {
   "name": "mtg-scrap",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "MTG Scrapper - Aims to scrap from all data providers (mtgo, scg, etc) everything of all formats, save it locally or make it usable as an API.",
   "private": true,
   "scripts": {
