@@ -1,4 +1,4 @@
-# MTG-scrap
+# MTG-scrap - v0.1.0
 
 ### What is it ?
 MTG Scrap aims to be a simple scraper/parser with cool features to make your life easier.
