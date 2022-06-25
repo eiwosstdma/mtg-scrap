@@ -4,6 +4,7 @@ test(`func: ${ parseRawData.name } - Should throw a string TypeError`, async () 
   const someTxt = "<p></p>";
   const someSchema = {};
 
+  expect(true).toBeTruthy();
   try {
     await parseRawData(123);
   } catch (err) {
